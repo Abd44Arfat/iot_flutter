@@ -6,10 +6,10 @@ import 'device_details_screen.dart';
 class DevicesScreen extends StatelessWidget {
   DevicesScreen({Key? key}) : super(key: key);
   List devices = [
-    ['Smart Light', 'assets/images/air.png', true],
-    ['Smart Tv', 'assets/images/Group 11.png', true],
-    ['Light Room', 'assets/images/Group 11.png', false],
-    ['Light Room', 'assets/images/lamp.png', true]
+    ['Smart Light', 'assets/images/air.png','livingroom', true],
+    ['Smart Tv', 'assets/images/Group 11.png','livingroom', true],
+    ['Light Room', 'assets/images/Group 11.png','livingroom', false],
+    ['Light Room', 'assets/images/lamp.png','livingroom', true]
   ];
 
   @override
@@ -44,7 +44,7 @@ class DevicesScreen extends StatelessWidget {
                   child: Box(
                     name: devices[index][0],
                     url: devices[index][1],
-                    switchstatus: devices[index][2],
+                    switchstatus: devices[index][3], room: devices[index][2],
                   ),
                 );
               },
@@ -57,7 +57,7 @@ class DevicesScreen extends StatelessWidget {
 
                 itemCount: devices.length,
                 scrollDirection: Axis.horizontal, itemBuilder: ( context, index) {
-              return Box(name: devices[index][0], url:devices[index][1] , switchstatus: devices[index][2],
+              return Box(name: devices[index][0], url:devices[index][1] , switchstatus: devices[index][3], room:devices[index][2],
               );}),
           ), Container(
             height: 200,
@@ -66,7 +66,7 @@ class DevicesScreen extends StatelessWidget {
 
                 itemCount: devices.length,
                 scrollDirection: Axis.horizontal, itemBuilder: ( context, index) {
-              return Box(name: devices[index][0], url:devices[index][1] , switchstatus: devices[index][2],
+              return Box(name: devices[index][0], url:devices[index][1] , switchstatus: devices[index][3], room: devices[index][2],
               );}),
           ),
         ],

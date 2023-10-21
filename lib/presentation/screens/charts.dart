@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:untitled6/presentation/screens/vertical%20box.dart';
 import 'package:untitled6/presentation/widgets/box.dart';
 
+import '../widgets/anlytics_list.dart';
+
 class LineChartSample2 extends StatefulWidget {
   const LineChartSample2({super.key});
 
@@ -12,11 +14,12 @@ class LineChartSample2 extends StatefulWidget {
 
 class _LineChartSample2State extends State<LineChartSample2> {
 
-  List devices = [
-    ['Smart Light', 'assets/images/air.png', true],
-    ['Smart Tv', 'assets/images/Group 11.png', true],
-    ['Light Room','assets/images/Group 11.png' ,false],
-    ['Light Room', 'assets/images/lamp.png' ,true]
+  List<List<dynamic>> devices = [
+    ['Smart Light', 'Kwh', '369', Icons.lightbulb, '7 Devices'],
+    ['Light', 'Kwh', '348', Icons.desktop_windows, '4 Devices'],
+    ['Smart tv', 'Kwh', '25', Icons.tv, '3 Devices'],
+    ['Smart sound', 'Kwh', '6548', Icons.surround_sound_outlined, '2 Devices'],
+    ['Smart fridge', 'Kwh', '4369', Icons.lightbulb, '15 Devices'],
   ];
   List<Color> gradientColors = [
     Colors.green,
@@ -34,7 +37,10 @@ class _LineChartSample2State extends State<LineChartSample2> {
         title: Center(child: Text('Devives')),
         leading: Icon(Icons.arrow_back_ios_new_rounded),
         actions: [
-          Icon(Icons.search)
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: Icon(Icons.search),
+          )
 
         ],
 
@@ -47,7 +53,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 50,
+              height: 10,
             ),
             Container(
               width: double.infinity,
@@ -133,16 +139,21 @@ class _LineChartSample2State extends State<LineChartSample2> {
             SizedBox(height: 10,),
             Text('Devives power consumption',style: TextStyle(color: Colors.white,fontSize: 20),),
 
-        Container(
-        height: 200,
-        width: double.infinity,
-        child: ListView.builder(
-
-            itemCount: devices.length,
-             itemBuilder: ( context, index) {
-          return VirticalBox(name: devices[index][0], url:devices[index][1] , switchstatus: devices[index][2],
-          );}),
-        )],
+            Expanded(
+              child: ListView.builder(
+                itemCount: devices.length,
+                itemBuilder: (context, index) {
+                  return AnlyticsItem(
+                    name: devices[index][0],
+                    unit: devices[index][1],
+                    numberofdevices: devices[index][4],
+                    cost: devices[index][2],
+                    icon: devices[index][3],
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -9,10 +9,10 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   List devices = [
-    ['Smart Light', 'assets/images/air.png', true],
-    ['Smart Tv', 'assets/images/Group 11.png', true],
-    ['Light Room','assets/images/Group 11.png' ,false],
-    ['Light Room', 'assets/images/lamp.png' ,true]
+    ['Air condition', 'assets/images/air.png', 'living room', true],
+    ['Mt-256', 'assets/images/Group 11.png', 'living room', true],
+    ['Mt-565', 'assets/images/Group 11.png', 'living room', false],
+    ['Light Room', 'assets/images/lamp.png', 'living room', true]
   ];
 
   @override
@@ -22,63 +22,77 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Color(0xff141415),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 50,
-              ),
-              Text(
-                'welcome\n abdelrhman',
-                style: TextStyle(color: Colors.white),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              DiscountCard(),
-              SizedBox(
-                height: 50,
-              ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 50,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 18),
+                  child: Text(
+                    'welcome,\n abdelrhman',
+                    style: TextStyle(color: Colors.white,fontSize: 20),
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                DiscountCard(),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Popular Shoes',
-                    style: TextStyle(
-color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Text(
+                        'Popular Shoes',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
-                  ),
-                  TextButton(
-                    onPressed: () { Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) =>  VerticalBoxList()),
-                    ); }, child: Text( 'see all',
-                    style: TextStyle(
-                      color: AppColor.primary,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),),
-                  ),
-
-                ],
-              ),
-              Expanded(
-                child: GridView.builder(
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => VerticalBoxList()),
+                        );
+                      },
+                      child: Text(
+                        'see all',
+                        style: TextStyle(
+                          color: AppColor.primary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   itemCount: devices.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,childAspectRatio: 1/1.3,),
-                    itemBuilder: (context, index) {
-                      return Box(name: devices[index][0], url:devices[index][1] , switchstatus: devices[index][2],
-
-
-                      );
-                    }),
-              ),
-              SizedBox(height: 50,)
-            ],
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1 / 1.3,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Box(
+                      name: devices[index][0],
+                      url: devices[index][1],
+                      switchstatus: true,
+                      room: devices[index][2],
+                    );
+                  },
+                ),
+                SizedBox(height: 50),
+              ],
+            ),
           ),
         ),
       ),

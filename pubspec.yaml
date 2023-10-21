@@ -38,6 +38,7 @@ dependencies:
   persistent_bottom_nav_bar_v2:
   speech_to_text:
   fl_chart:
+  feather_icons:
   image_picker:
   image_cropper:
   permission_handler:

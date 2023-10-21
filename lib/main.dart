@@ -4,6 +4,7 @@ import 'package:untitled6/presentation/screens/Spash.dart';
 import 'package:untitled6/presentation/screens/home-screen.dart';
 import 'package:untitled6/presentation/screens/root_screen.dart';
 import 'package:untitled6/presentation/screens/vertical%20box.dart';
+import 'package:untitled6/presentation/widgets/anlytics_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,13 +18,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
 
 fontFamily: 'Barlow'
 
       ),
-      home: test()
+      home: SplashPage()
     );
   }
 }

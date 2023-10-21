@@ -45,21 +45,37 @@ class DiscountCard extends StatelessWidget {
                           style: TextStyle(color: Colors.white),
                           children: [
                             TextSpan(
-                              text: "Get Discount of \n",
-                              style: TextStyle(fontSize: 16),
+                              text: "17 Sep,2023 \n",
+                              style: TextStyle(fontSize: 16,color: Colors.grey),
                             ),
                             TextSpan(
-                              text: "30% \n",
+                              text: "Energy Usage \n",
                               style: TextStyle(
-                                fontSize: 43,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white
+                              ),
+                            ),
+                            TextSpan(
+                              text: "142.6",
+                              style: TextStyle(
+                                fontSize: 38,
                                 fontWeight: FontWeight.bold,
                                 color: AppColor.primary
                               ),
                             ),
                             TextSpan(
+                              text: "kwh",
+                              style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey
+                              ),
+                            ),
+                            TextSpan(
                               text:
-                              "at MacDonald's on your first order & Instant cashback",
-                              style: TextStyle(fontSize: 10),
+                              "12% less than yesterday",
+                              style: TextStyle(fontSize: 11,color: Colors.grey),
                             ),
                           ],
                         ),

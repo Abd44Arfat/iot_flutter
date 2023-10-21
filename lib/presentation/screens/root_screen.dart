@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled6/constant/color_manager.dart';
 import 'package:untitled6/presentation/screens/home-screen.dart';
@@ -80,30 +81,30 @@ class _testState extends State<test> with SingleTickerProviderStateMixin {
                 tabs: <Widget>[
                   Tab(
                     icon: Icon(
-                      Icons.home,
+                      FeatherIcons.home,
                       size: 24.0,
                     ),
                   ),
                   Tab(
                     icon: Icon(
-                      Icons.category,
+                      FeatherIcons.grid,
                       size: 24.0,
                     ),
                   ),
                   Tab(
                     icon: Icon(
-                      Icons.category,
+                      FeatherIcons.mic,
                       size: 24.0,
                     ),
                   ),
                   Tab(
                     icon: Icon(
-                      Icons.search,
+                      FeatherIcons.barChart2,
                       size: 24.0,
                     ),
                   ), Tab(
                     icon: Icon(
-                      Icons.search,
+                      FeatherIcons.user,
                       size: 24.0,
                     ),
                   ),

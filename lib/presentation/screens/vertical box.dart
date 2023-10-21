@@ -20,11 +20,10 @@ class VerticalBoxList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff141415),
-
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Color(0xff141415),
-        title: Center(child: Text('Devives')),
+        title: Center(child: Text('Devices')),
         leading: Icon(Icons.arrow_back_ios_new_rounded),
         actions: [
           Padding(
@@ -33,10 +32,12 @@ class VerticalBoxList extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               itemCount: devices.length,
               itemBuilder: (context, index) {
                 return VirticalBox(
@@ -46,26 +47,31 @@ class VerticalBoxList extends StatelessWidget {
                 );
               },
             ),
-          ),
-          SizedBox(height: 30,),
-          CustomButton(
-            size: 300,
-            press: () {
-              // Add your logic for the button press here
-            },
-            text: 'Add New Device',
-            color: AppColor.primary,
-            height: 56,
-            fontesiz: 15,
-            textColor: Colors.white,
-            icon: Icons.add,
-          ),
-          SizedBox(height: 10,),
-
-        ],
+            SizedBox(
+              height: 30,
+            ),
+            CustomButton(
+              size: 300,
+              press: () {
+                // Add your logic for the button press here
+              },
+              text: 'Add New Device',
+              color: AppColor.primary,
+              height: 56,
+              fontesiz: 15,
+              textColor: Colors.white,
+              icon: Icons.add,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
       ),
     );
-  }}
+  }
+}
+
 class VirticalBox extends StatefulWidget {
   VirticalBox({
     super.key,
@@ -93,18 +99,20 @@ class _BoxState extends State<VirticalBox> {
         height: 150,
         width: double.infinity,
         decoration: BoxDecoration(
-            color: Color(0xFF1D1E23).withOpacity(0.7),
-            borderRadius: BorderRadius.circular(20)),
+          color: Color(0xFF1D1E23).withOpacity(0.7),
+          borderRadius: BorderRadius.circular(20),
+        ),
         child: Padding(
           padding: const EdgeInsets.only(left: 10, top: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                  child: Text(
-                widget.name,
-                style: TextStyle(color: Colors.white, fontSize: 25),
-              )),
+                child: Text(
+                  widget.name,
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -145,7 +153,6 @@ class _BoxState extends State<VirticalBox> {
                                 color: switchStatus
                                     ? Colors.white
                                     : Color(0xFF1D1E23),
-
                               ),
                             ),
                           ),
@@ -157,10 +164,14 @@ class _BoxState extends State<VirticalBox> {
                     width: 20,
                   ),
                   Container(
-                      height: 100,
+                    height: 100,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(bottomRight: Radius.circular(20)),
                       child: Image.asset(
                         widget.url,
-                      ))
+                      ),
+                    ),
+                  )
                 ],
               ),
             ],

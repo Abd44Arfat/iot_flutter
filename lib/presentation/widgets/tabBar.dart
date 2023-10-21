@@ -47,7 +47,10 @@ class _TabBarPageState extends State<TabBarPage>
 title: Center(child: Text('Devives')),
         leading: Icon(Icons.arrow_back_ios_new_rounded),
         actions: [
-          Icon(Icons.search)
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: Icon(Icons.search),
+          )
           
         ],
 
